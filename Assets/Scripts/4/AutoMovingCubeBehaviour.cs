@@ -11,10 +11,10 @@ public class AutoMovingCubeBehaviour : MonoBehaviour
     private bool shouldMove = false;
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         if(shouldMove)
-            GetComponent<Rigidbody>().velocity = Vector3.right * (speed * Time.deltaTime);
+            GetComponent<Rigidbody>().MovePosition(transform.position + Vector3.right * (speed * Time.fixedDeltaTime));
         if (Input.GetKeyDown(KeyCode.Space) && !shouldMove)
             shouldMove = true;
     }
